@@ -1,6 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using FreshMvvm;
+using B4.EE.VermeulenDries.ViewModels;
+using B4.EE.VermeulenDries.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace B4.EE.VermeulenDries
@@ -10,8 +13,9 @@ namespace B4.EE.VermeulenDries
         public App()
         {
             InitializeComponent();
+            FreshIOC.Container.Register<IStorageService>(new StorageInMemoryService());
 
-            MainPage = new MainPage();
+            MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<MainViewModel>());
         }
 
         protected override void OnStart()

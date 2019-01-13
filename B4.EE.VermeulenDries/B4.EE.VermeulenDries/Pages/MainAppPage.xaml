@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="B4.EE.VermeulenDries.Pages.MainAppPage"
+             xmlns:bhv="clr-namespace:B4.EE.VermeulenDries.Behaviors" >
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Beige">
+            <Image Source="careercoaching.jpg" />
+            <Label Text="Welcome, " />
+            <Label Text="{Binding Name}" />
+            <Label Text="Your current appointments: " IsVisible="{Binding IsNotAdmin}"/>
+            <ListView ItemsSource="{Binding Appointments}" IsVisible="{Binding IsNotAdmin}">
+                <!--<ListView.Behaviors>
+                    <bhv:EventToCommandBehavior 
+                        EventName="ItemTapped"  
+                        Command="{Binding ViewAppointmentCommand}"
+                        EventArgsConverter="{StaticResource ItemTappedEventArgsConv}" />
+                </ListView.Behaviors>-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <!--<MenuItem Command="{Binding BindingContext.ViewAppointmentCommand, Source={x:Reference page}}" 
+                                          CommandParameter="{Binding .}" 
+                                          Text="Edit" />
+                                <MenuItem Command="{Binding BindingContext.DeleteAppointmentCommand, Source={x:Reference page}}"
+                                          CommandParameter="{Binding .}"
+                                          Text="Delete"
+                                          IsDestructive="True" />-->
+                            </ViewCell.ContextActions>
+                            <StackLayout HeightRequest="50">
+                                
+                                <Label Text="{Binding DateTime}" 
+                                    VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Make a new appointment" Command="{Binding MakeAppointmentCommand}" IsVisible="{Binding IsNotAdmin}"/>
+            <ListView ItemsSource="{Binding Appointments}" IsVisible="{Binding IsAdmin}">
+                <!--<ListView.Behaviors>
+                    <bhv:EventToCommandBehavior 
+                        EventName="ItemTapped"  
+                        Command="{Binding ViewAppointmentCommand}"
+                        EventArgsConverter="{StaticResource ItemTappedEventArgsConv}" />
+                </ListView.Behaviors>-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!--<ViewCell.ContextActions>
+                                <MenuItem Command="{Binding BindingContext.ViewAppointmentCommand, Source={x:Reference page}}" 
+                                          CommandParameter="{Binding .}" 
+                                          Text="Edit" />
+                                <MenuItem Command="{Binding BindingContext.DeleteAppointmentCommand, Source={x:Reference page}}"
+                                          CommandParameter="{Binding .}"
+                                          Text="Delete"
+                                          IsDestructive="True" />
+                            </ViewCell.ContextActions>-->
+                            <StackLayout HeightRequest="50">
+                                <Label Text="{Binding Name}" />
+                                <Label Text="{Binding DateTime}" 
+                                    VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

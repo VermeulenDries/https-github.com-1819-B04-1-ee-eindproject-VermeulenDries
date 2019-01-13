@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="B4.EE.VermeulenDries.Pages.NewAppointmentPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <DatePicker Date="{Binding Date}" />
+            <TimePicker Time="{Binding Time}" />
+            <Entry Placeholder="Add an optional message" Text="{Binding Msg}"/>
+            <Button Text="Confirm" Command="{Binding ConfirmAppCommand}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

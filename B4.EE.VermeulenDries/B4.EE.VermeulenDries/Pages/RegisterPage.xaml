@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="B4.EE.VermeulenDries.Pages.RegisterPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Beige">
+            <Image Source="careercoaching.jpg" />
+            <Entry Placeholder="First Name" Text="{Binding FirstName}"/>
+            <Entry Placeholder="Last Name" Text="{Binding LastName}" />
+            <Entry Placeholder="Email" Text="{Binding Email}" />
+            <Entry Placeholder="Current job title" Text="{Binding CurrentJobTitle}" />
+            <Entry Placeholder="Password" Text="{Binding Password}" />
+            <Image Source="{Binding Image}" />
+            <Button Text="Take a picture!" Command="{Binding TakePictureCommand}" />
+            <Label Text="Your current coordinates:"/>
+            <Label Text="{Binding Coordinates}" />
+            <Button Text="Register" Command="{Binding RegisterCommand}" />
+
+            <Label Text="{Binding ErrorMsg}" IsVisible="{Binding ErrorVsbl}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
